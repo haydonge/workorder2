@@ -1,0 +1,11 @@
+---
+import Layout from '../layout/BaseLayout.astro';
+import FilterToggle from '../components/FilterToggle';
+---
+
+<Layout title="任务过滤器">
+  <main>
+    <h1 class="text-3xl font-bold text-center my-8">任务列表</h1>
+    <FilterToggle client:load />
+  </main>
+</Layout>

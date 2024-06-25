@@ -1,0 +1,61 @@
+---
+import {Icon} from "astro-icon/components";
+type Props = {
+  data: {
+    workorder:string;
+    name: string;
+    works: string;
+    startdate: Date;
+    enddate: Date;
+    priority:string;
+  };
+};
+
+const { data } = Astro.props;
+
+const startDate = new Date(data.startdate);
+const endDate = new Date(data.enddate);
+const timeDifference = endDate.getTime() - startDate.getTime();
+const dayDifference = timeDifference / (1000 * 3600 * 24);
+const currentDate = new Date ();
+const overdue = endDate < currentDate;
+
+
+const cardStyle = (dayDifference < 3) || overdue ? 'bg-red-200' : 'bg-green-200'; // 使用 Tailwind 颜色类
+const showLogo = data.priority === "急"; // 判断是否显示 logo
+
+---
+<div class={`card ${cardStyle} shadow-md hover:shadow-xl transition-shadow duration-300 relative`}>
+  
+  {showLogo && (
+    <div class="absolute top-0 right-0 m-1 logo-container">
+      <Icon name="logo23" size={80} class="text-red-500" />
+    </div>
+  )}
+  <div class="title font-bold mb-2">申请人: {data.name}</div>
+  
+  <div>申请日期: {new Date(data.startdate).toLocaleDateString()}</div>
+  <div>需求日期: {new Date(data.enddate).toLocaleDateString()}</div>
+  <div>工单号码:{data.workorder}</div>
+  <div>任务内容: {data.works}</div>
+</div>
+
+<style>
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    color: #000000;
+  }
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .logo-container {
+    background-color: transparent; /* 设置背景透明 */
+  }
+</style>

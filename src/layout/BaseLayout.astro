@@ -1,0 +1,39 @@
+---
+import Footer from "../components/Footer.astro";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title = "系统工单", description = "追踪" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="msapplication-TileColor" content="#F46633" />
+    <meta name="theme-color" content="#202020" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+    <header class="text-center py-6 bg-gray-800 text-white">
+      <h1 class="text-3xl font-bold">Work Order Tracking Board</h1>
+      <nav class="mt-4">
+        <a href="/" class="text-blue-300 hover:underline mx-2">HOME</a>
+        <a href="/ae" class="text-blue-300 hover:underline mx-2">AE</a>
+        <a href="/auto" class="text-blue-300 hover:underline mx-2">AUTO</a>
+      </nav>
+    </header>
+    <main class="container mx-auto my-6 flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

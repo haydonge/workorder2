@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+---
+<BaseLayout>
+  <main class="container mx-auto my-6 text-center px-4 sm:px-6 lg:px-8">
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold">功能介绍</h2>
+      <p class="mt-4 text-lg">在这里，您可以追踪和管理所有的工单，查看详细信息和状态更新。</p>
+      <ul class="mt-6 list-disc list-inside text-left mx-auto max-w-2xl">
+        <li class="mb-2">
+          <strong>工单创建与分配:</strong> 简单快捷地创建新工单，并将其分配给适当的团队成员。
+        </li>
+        <li class="mb-2">
+          <strong>实时状态更新:</strong> 实时跟踪工单的进展情况，确保所有相关人员及时了解最新状态。
+        </li>
+        <li class="mb-2">
+          <strong>记录与报告:</strong> 仅仅追踪“未完成，Ongoing, Delay等状态"。OverDue，或接近3天内的项目变色追踪。“急”只能添加“急”作为标识符。
+        </li>
+      </ul>
+    </div>
+  </main>
+</BaseLayout>
+
+
